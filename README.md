@@ -1,2 +1,7 @@
 # wrap-it
-Standard language syntax to generate php code
+Standard language syntax to generate DDD objects in php
+
+## Aggregate
+
+
+

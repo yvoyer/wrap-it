@@ -1,0 +1,6 @@
+/phpunit.xml
+!/phpunit.xml.dist
+/vendor
+/bin
+/composer.lock
+/infection-log.txt
