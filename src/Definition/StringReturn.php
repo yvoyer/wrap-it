@@ -1,17 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Star\WrapIt\Lexer\Symbols;
+namespace Star\WrapIt\Definition;
 
-use Star\WrapIt\Lexer\Definition;
 use Star\WrapIt\Extension\WrapExtension;
 
-final class EndOfFile implements Definition
+final class StringReturn implements ReturnValue
 {
-    /**
-     * @param WrapExtension $extension
-     */
     public function acceptExtension(WrapExtension $extension): void
     {
+        $extension->visitMethodReturn($this);
         throw new \RuntimeException('Method ' . __METHOD__ . ' not implemented yet.');
     }
 }

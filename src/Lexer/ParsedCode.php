@@ -19,7 +19,7 @@ final class ParsedCode
     public function acceptTemplate(WrapExtension $visitor): void
     {
         foreach ($this->symbols as $symbol) {
-            $symbol->acceptTemplate($visitor);
+            $symbol->acceptExtension($visitor);
         }
     }
 }

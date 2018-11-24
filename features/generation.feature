@@ -107,33 +107,33 @@ Feature: Generating ddd quality php code
 #
 #    """
 
-  Scenario: Generating an aggregate with an empty construct
-#    Given I create a file named "Something.wrap" with content:
-#    """
-#    aggregate Something
-#    {
-#        construct withEmpty()
-#        {
-#        }
-#    }
-#    """
-#    When I generate the code for file "Something.wrap" in "php" language
-#    Then The file "Something.php" should have a content of:
-#    """
-#    <?php declare(strict_types=1);
-#
-#    final class
-#    {
-#        private function __construct()
-#        {
-#        }
-#
-#        public static function withEmpty(): self
-#        {
-#            return new self();
-#        }
-#    }
-#    """
+  Scenario: Generating an aggregate with an named construct
+    Given I create a file named "Something.wrap" with content:
+    """
+    aggregate Something
+    {
+        construct fromOtherName()
+        {
+        }
+    }
+    """
+    When I generate the code for file "Something.wrap" in "php" language
+    Then The file "Something.php" should have a content of:
+    """
+    <?php declare(strict_types=1);
+
+    final class
+    {
+        private function __construct()
+        {
+        }
+
+        public static function fromOtherName(): self
+        {
+            return new self();
+        }
+    }
+    """
 
   Scenario: Generating an aggregate with a method argument
 #    Given I create a file named "Something.wrap" with content:

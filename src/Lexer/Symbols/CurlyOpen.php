@@ -18,7 +18,7 @@ final class CurlyOpen implements WrapToken, Definition
         return $this;
     }
 
-    public function acceptTemplate(WrapExtension $template): void
+    public function acceptExtension(WrapExtension $extension): void
     {
     }
 

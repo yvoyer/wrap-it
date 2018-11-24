@@ -3,7 +3,7 @@
 namespace Star\WrapIt\Lexer;
 
 use PHPUnit\Framework\TestCase;
-use Star\WrapIt\Definition\ClassName;
+use Star\WrapIt\Definition\ClassDefinition;
 use Star\WrapIt\Lexer\Symbols;
 
 final class WrapLexerTest extends TestCase
@@ -40,15 +40,9 @@ CODE;
 
         $lexer = WrapLexer::fromString($wrap);
         /**
-         * @var ClassName $marker
+         * @var ClassDefinition $marker
          */
-        $this->assertInstanceOf(ClassName::class, $marker = $lexer->parseDefinition());
-        $this->assertTrue($marker->isFinal());
-        $this->assertFalse($marker->isAbstract());
-        $this->assertFalse($marker->hasExtends());
-        $this->assertCount(0, $marker->getExtends());
-        $this->assertFalse($marker->hasImplements());
-        $this->assertCount(0, $marker->getImplements());
+        $this->assertInstanceOf(ClassDefinition::class, $marker = $lexer->parseDefinition());
 
         $this->assertTrue($lexer->hasNextSymbol());
         $this->assertInstanceOf(Symbols\CurlyOpen::class, $lexer->parseDefinition());

@@ -2,7 +2,7 @@
 
 namespace Star\WrapIt\Definition;
 
-final class ClassName
+final class MethodName
 {
     /**
      * @var string
@@ -12,11 +12,6 @@ final class ClassName
     private function __construct(string $name)
     {
         $this->name = $name;
-    }
-
-    public function toString(): string
-    {
-        return $this->name;
     }
 
     public static function fromString(string $name): self

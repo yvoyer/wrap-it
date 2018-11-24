@@ -8,9 +8,9 @@ use Star\WrapIt\Extension\WrapExtension;
 final class Extend implements Definition
 {
     /**
-     * @param WrapExtension $template
+     * @param WrapExtension $extension
      */
-    public function acceptTemplate(WrapExtension $template): void
+    public function acceptExtension(WrapExtension $extension): void
     {
         throw new \RuntimeException('Method ' . __METHOD__ . ' not implemented yet.');
     }

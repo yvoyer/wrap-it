@@ -2,21 +2,23 @@
 
 namespace Star\WrapIt\Definition;
 
-final class ClassName
+use Star\WrapIt\Extension\WrapExtension;
+
+final class StringArgument implements MethodArgument
 {
     /**
      * @var string
      */
     private $name;
 
-    private function __construct(string $name)
+    public function __construct(string $name)
     {
         $this->name = $name;
     }
 
-    public function toString(): string
+    public function acceptExtension(WrapExtension $extension): void
     {
-        return $this->name;
+        $extension->visitMethodArgument($this);
     }
 
     public static function fromString(string $name): self

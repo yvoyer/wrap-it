@@ -3,6 +3,9 @@
 namespace Star\WrapIt\Extension\Languages\Php;
 
 use Star\WrapIt\Definition\ClassName;
+use Star\WrapIt\Definition\MethodArgument;
+use Star\WrapIt\Definition\MethodName;
+use Star\WrapIt\Definition\ReturnValue;
 use Star\WrapIt\Extension\Languages\Php\Templates;
 use Star\WrapIt\Extension\WrapExtension;
 use Symfony\Component\Process\Process;
@@ -26,11 +29,11 @@ final class PhpExtension implements WrapExtension
         Assert::directory($binDir);
     }
 
-    public function visitClassDefinition(ClassName $token): void
+    public function visitClass(ClassName $class): void
     {
         $templates[] = new Templates\PhpOpenTag();
         $templates[] = new Templates\DeclareStrictTypes();
-        $templates[] = new Templates\FinalClass($token->getName());
+        $templates[] = new Templates\FinalClass($class->toString());
         $templates[] = new Templates\OpenClass();
         $templates[] = new Templates\PrivateConstruct();
         $templates[] = new Templates\EndClass();
@@ -44,6 +47,21 @@ final class PhpExtension implements WrapExtension
                 $templates
             )
         );
+    }
+
+    public function visitMethod(MethodName $method): void
+    {
+        throw new \RuntimeException('Method ' . __METHOD__ . ' not implemented yet.');
+    }
+
+    public function visitMethodArgument(MethodArgument $argument): void
+    {
+        throw new \RuntimeException('Method ' . __METHOD__ . ' not implemented yet.');
+    }
+
+    public function visitMethodReturn(ReturnValue $return): void
+    {
+        throw new \RuntimeException('Method ' . __METHOD__ . ' not implemented yet.');
     }
 
     public function getContent(): string

@@ -2,7 +2,7 @@
 
 namespace Star\WrapIt\Lexer\Symbols;
 
-use Star\WrapIt\Definition\ClassName;
+use Star\WrapIt\Definition\ClassDefinition;
 use Star\WrapIt\Lexer\CodeLexer;
 use Star\WrapIt\Lexer\Definition;
 use Star\WrapIt\Lexer\ParseWalker;
@@ -14,11 +14,11 @@ final class Aggregate implements WrapKeyword
     const KEYWORD = 'aggregate';
 
     /**
-     * @var ClassName
+     * @var ClassDefinition
      */
     private $className;
 
-    private function __construct(ClassName $name)
+    private function __construct(ClassDefinition $name)
     {
         $this->className = $name;
 //        $className = $lexer->nextSymbol();
@@ -45,6 +45,6 @@ final class Aggregate implements WrapKeyword
         $className = $lexer->nextSymbol();
         $lexer->moveAfterSymbol($className);
 
-        return new self(ClassName::withName($className));
+        return new self(ClassDefinition::withName($className));
     }
 }
